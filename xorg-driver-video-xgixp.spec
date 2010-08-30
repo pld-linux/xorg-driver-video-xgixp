@@ -1,18 +1,19 @@
 Summary:	X.org video drivers for XGI XP adapters
 Summary(pl.UTF-8):	Sterowniki obrazu X.org do kart graficznych XGI XP
 Name:		xorg-driver-video-xgixp
-Version:	1.7.99.4
-Release:	4
+Version:	1.8.0
+Release:	1
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-video-xgixp-%{version}.tar.bz2
-# Source0-md5:	0e7d0df07528c57304900da3acafc1a2
+# Source0-md5:	0ebf98f1beaf911a242c79647cc08fbf
 URL:		http://xorg.freedesktop.org/
-BuildRequires:	autoconf >= 2.57
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
-BuildRequires:	libdrm-devel >= 2.0
+BuildRequires:	libdrm-devel >= 2.2
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.19
+BuildRequires:	rpmbuild(macros) >= 1.389
 BuildRequires:	xorg-lib-libpciaccess-devel >= 0.8.0
 BuildRequires:	xorg-proto-fontsproto-devel
 BuildRequires:	xorg-proto-randrproto-devel
@@ -20,10 +21,10 @@ BuildRequires:	xorg-proto-renderproto-devel
 BuildRequires:	xorg-proto-videoproto-devel
 BuildRequires:	xorg-proto-xextproto-devel
 BuildRequires:	xorg-proto-xf86driproto-devel
-BuildRequires:	xorg-util-util-macros >= 0.99.2
+BuildRequires:	xorg-util-util-macros >= 1.8
 BuildRequires:	xorg-xserver-server-devel >= 1.0.99.901
-BuildRequires:  rpmbuild(macros) >= 1.389
-%requires_xorg_xserver_videodrv
+%{?requires_xorg_xserver_videodrv}
+Requires:	libdrm >= 2.2
 Requires:	xorg-xserver-libdri >= 1.0.99.901
 Requires:	xorg-xserver-server >= 1.0.99.901
 Obsoletes:	XFree86-driver-xgi < 1:7.0.0
@@ -46,8 +47,7 @@ Sterowniki obrazu X.org do kart graficznych XGI XP:
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
-	--disable-static
+%configure
 
 %{__make}
 
@@ -64,5 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc COPYING ChangeLog README
 %attr(755,root,root) %{_libdir}/xorg/modules/drivers/xgixp_drv.so
 %{_mandir}/man4/xgixp.4*
