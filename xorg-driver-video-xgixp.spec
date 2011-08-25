@@ -2,7 +2,7 @@ Summary:	X.org video drivers for XGI XP adapters
 Summary(pl.UTF-8):	Sterowniki obrazu X.org do kart graficznych XGI XP
 Name:		xorg-driver-video-xgixp
 Version:	1.8.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		X11/Applications
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-video-xgixp-%{version}.tar.bz2
@@ -25,6 +25,7 @@ BuildRequires:	xorg-util-util-macros >= 1.8
 BuildRequires:	xorg-xserver-server-devel >= 1.0.99.901
 %{?requires_xorg_xserver_videodrv}
 Requires:	libdrm >= 2.2
+Provides:	xorg-driver-video
 Requires:	xorg-xserver-libdri >= 1.0.99.901
 Requires:	xorg-xserver-server >= 1.0.99.901
 Obsoletes:	XFree86-driver-xgi < 1:7.0.0
